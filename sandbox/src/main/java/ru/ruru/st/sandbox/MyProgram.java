@@ -3,22 +3,20 @@ package ru.ruru.st.sandbox;
 public class MyProgram {
     public static void main(String[] args) {
         hello("Max");
-        System.out.println("Площадь " + area(4));
-        System.out.println("Площадь прямоугольника " + area(4, 6));
+
+        Square s = new Square(5);
+        System.out.println("Площадь " + s.area());
+
+        Rectangle r = new Rectangle(4, 6);
+        System.out.println("Площадь прямоугольника " + r.area());
+
         double a = 1.0;
-        double s = a + a;
-        System.out.println("Вот сумма " + a + " + " + a + " = " + s);
+        double sum = a + a;
+        System.out.println("Вот сумма " + a + " + " + a + " = " + sum);
     }
 
     public static void hello(String somebody) {
         System.out.println("Hello-Hello, "+ somebody +"!");
     }
 
-    public static double area(double a) {
-        return a*a;
-    }
-
-    public static double area(double a, double b) {
-        return a*b;
-    }
 }
