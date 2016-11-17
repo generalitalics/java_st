@@ -9,6 +9,7 @@ import ru.ruru.st.adressbook.appmanager.ApplicationManager;
  */
 public class TestBase {
 
+
     protected final ApplicationManager app = new ApplicationManager();
 
     @BeforeMethod
