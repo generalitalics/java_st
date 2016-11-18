@@ -7,32 +7,28 @@ import ru.ruru.st.adressbook.model.ContactData;
 /**
  * Created by m.shoshin on 17.11.2016.
  */
-public class ContactHelper {
-    FirefoxDriver wd;
+public class ContactHelper extends HelperBase{
+
+    public ContactHelper(FirefoxDriver wd) {
+        super(wd);
+    }
 
     public void returnToContactPage() {
-        wd.findElement(By.linkText("home page")).click();
+        click(By.linkText("home page"));
     }
 
     public void submitContactCreation() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
     public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-        wd.findElement(By.name("mobile")).click();
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(contactData.getMnumber());
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+        type(By.name("firstname"), contactData.getName());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("mobile"), contactData.getMnumber());
+        type(By.name("email"), contactData.getEmail());
     }
 
     public void initContactCreation() {
-        wd.findElement(By.name("firstname")).click();
+        click(By.name("firstname"));
     }
 }
