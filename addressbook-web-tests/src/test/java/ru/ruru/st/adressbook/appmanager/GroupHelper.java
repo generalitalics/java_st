@@ -3,7 +3,6 @@ package ru.ruru.st.adressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.ruru.st.adressbook.model.GroupData;
 
 import java.util.ArrayList;
