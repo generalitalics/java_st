@@ -87,11 +87,9 @@ public class ContactHelper extends HelperBase {
         for (int i = 0; i < elementsN.size(); i++) {
             String lastname = elementsL.get(i).getText();
             String name = elementsN.get(i).getText();
-            System.out.print(name + " " + lastname + "|");
             ContactData contact = new ContactData(name, lastname, null, null, null);
             contacts.add(contact);
         }
-        System.out.println();
         return contacts;
     }
 }
