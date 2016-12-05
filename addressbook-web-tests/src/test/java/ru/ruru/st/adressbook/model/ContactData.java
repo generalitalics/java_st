@@ -6,9 +6,6 @@ public class ContactData {
     private final String lastname;
     private final String mnumber;
     private final String email;
-
-
-
     private String group;
 
     public ContactData(int id, String name, String lastname, String mnumber, String email, String group) {
@@ -21,7 +18,7 @@ public class ContactData {
     }
 
     public ContactData(String name, String lastname, String mnumber, String email, String group) {
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.lastname = lastname;
         this.mnumber = mnumber;
@@ -65,7 +62,6 @@ public class ContactData {
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,7 +69,6 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
-        if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
@@ -81,10 +76,11 @@ public class ContactData {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
+
+
 
 }

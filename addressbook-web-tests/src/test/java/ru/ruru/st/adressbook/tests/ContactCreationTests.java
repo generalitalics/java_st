@@ -3,8 +3,8 @@ package ru.ruru.st.adressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.ruru.st.adressbook.model.ContactData;
-import ru.ruru.st.adressbook.model.GroupData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,13 +19,11 @@ public class ContactCreationTests extends TestBase {
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
 
-        int max = 0;
-        for(ContactData c : after){
-            max = c.getId();
-        }
-        contact.setId(max);
         before.add(contact);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        Comparator<? super ContactData> ById = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        before.sort(ById);
+        after.sort(ById);
+        Assert.assertEquals(before, after);
     }
 
 }
