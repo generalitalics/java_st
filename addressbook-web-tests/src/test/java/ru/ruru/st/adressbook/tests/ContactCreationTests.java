@@ -13,7 +13,7 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() {
         app.goTo().contactPage();
         List<ContactData> before = app.contact().list();
-        ContactData contact = new ContactData("Max", "Ivanov", "89025573455", "abc@mail.ru", "test1");
+        ContactData contact = new ContactData().withName("Max").withLastname("Ivanov").withMnumber("89025573455").withEmail("abc@mail.ru").withGroup("test1");
         app.contact().create(contact);
         List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size() + 1);

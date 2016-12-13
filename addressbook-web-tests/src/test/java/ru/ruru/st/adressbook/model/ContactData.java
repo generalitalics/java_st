@@ -1,33 +1,42 @@
 package ru.ruru.st.adressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String name;
-    private final String lastname;
-    private final String mnumber;
-    private final String email;
+    private int id = Integer.MAX_VALUE;
+    private String name;
+    private String lastname;
+    private String mnumber;
+    private String email;
     private String group;
 
-    public ContactData(int id, String name, String lastname, String mnumber, String email, String group) {
+    public ContactData withId(int id) {
         this.id = id;
-        this.name = name;
-        this.lastname = lastname;
-        this.mnumber = mnumber;
-        this.email = email;
-        this.group = group;
+        return this;
     }
 
-    public ContactData(String name, String lastname, String mnumber, String email, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.name = name;
-        this.lastname = lastname;
-        this.mnumber = mnumber;
+
+    public ContactData withEmail(String email) {
         this.email = email;
-        this.group = group;
+        return this;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
+    public ContactData withMnumber(String mnumber) {
+        this.mnumber = mnumber;
+        return this;
+    }
+
+    public ContactData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public ContactData withName(String name) {
+        this.name = name;
+        return this;
     }
 
     public int getId() {
