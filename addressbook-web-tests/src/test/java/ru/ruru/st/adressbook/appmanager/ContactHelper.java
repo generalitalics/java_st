@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.ruru.st.adressbook.model.ContactData;
+import ru.ruru.st.adressbook.model.Contacts;
 
 import java.util.HashSet;
 import java.util.List;
@@ -95,8 +96,8 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<ContactData>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elementsN = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td[3]"));
         List<WebElement> elementsL = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td[2]"));
         List<WebElement> element = wd.findElements(By.cssSelector("td.center input"));
