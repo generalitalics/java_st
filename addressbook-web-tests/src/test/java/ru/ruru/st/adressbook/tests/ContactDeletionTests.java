@@ -1,14 +1,9 @@
 package ru.ruru.st.adressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.ruru.st.adressbook.model.ContactData;
 import ru.ruru.st.adressbook.model.Contacts;
-
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,7 +18,7 @@ public class ContactDeletionTests extends TestBase {
     public void ensurePreconditions() {
         app.goTo().contactPage();
         if (app.contact().all().size() == 0) {
-            app.contact().create(new ContactData().withName("Max").withLastname("Ivanov2").withMnumber("89025573455").withEmail("abc@mail.ru").withGroup("test1"));
+            app.contact().create(new ContactData().withFirstname("Max").withLastname("Ivanov2").withMobilePhone("89025573455").withEmail("abc@mail.ru").withGroup("test1"));
         }
     }
 

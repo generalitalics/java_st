@@ -2,9 +2,11 @@ package ru.ruru.st.adressbook.model;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;
-    private String name;
+    private String firstname;
     private String lastname;
-    private String mnumber;
+    private String mobile;
+    private String home;
+    private String work;
     private String email;
     private String group;
 
@@ -13,6 +15,15 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withHomePhone(String home) {
+        this.home = home;
+        return this;
+    }
+
+    public ContactData withWorkPhone(String work) {
+        this.work = work;
+        return this;
+    }
 
     public ContactData withEmail(String email) {
         this.email = email;
@@ -24,8 +35,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withMnumber(String mnumber) {
-        this.mnumber = mnumber;
+    public ContactData withMobilePhone(String mnumber) {
+        this.mobile = mnumber;
         return this;
     }
 
@@ -35,8 +46,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withName(String name) {
-        this.name = name;
+    public ContactData withFirstname(String firstname) {
+        this.firstname = firstname;
         return this;
     }
 
@@ -44,16 +55,16 @@ public class ContactData {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public String getMnumber() {
-        return mnumber;
+    public String getMobile() {
+        return mobile;
     }
 
     public String getEmail() {
@@ -68,7 +79,7 @@ public class ContactData {
     public String toString() {
         return "ContactData{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
@@ -81,7 +92,7 @@ public class ContactData {
         ContactData that = (ContactData) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
         return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
     }
@@ -89,7 +100,7 @@ public class ContactData {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
