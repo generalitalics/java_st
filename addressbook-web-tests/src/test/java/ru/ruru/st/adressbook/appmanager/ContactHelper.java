@@ -30,7 +30,7 @@ public class ContactHelper extends HelperBase {
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
-        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("email"), contactData.getEmail());
 
         if (creation) {
@@ -100,14 +100,15 @@ public class ContactHelper extends HelperBase {
             return new Contacts(contactCache);
         }
         contactCache = new Contacts();
-        List<WebElement> elementsN = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td[3]"));
-        List<WebElement> elementsL = wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td[2]"));
-        List<WebElement> element = wd.findElements(By.cssSelector("td.center input"));
-        for (int i = 0; i < elementsN.size(); i++) {
-            String lastname = elementsL.get(i).getText();
-            String firstname = elementsN.get(i).getText();
-            int id = Integer.parseInt(element.get(i).getAttribute("value"));
-            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+        List<WebElement> rows = wd.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements((By.tagName("td")));
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String lastname = cells.get(1).getText();
+            String firstname = cells.get(2).getText();
+            String allphones = cells.get(5).getText();
+            String[] phones = allphones.split("\n");
+            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allphones));
         }
         return new Contacts(contactCache);
     }
