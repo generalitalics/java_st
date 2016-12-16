@@ -8,6 +8,7 @@ public class ContactData {
     private String home;
     private String work;
     private String email;
+    private String address;
     private String group;
     private String allPhones;
 
@@ -36,8 +37,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withMobilePhone(String mnumber) {
-        this.mobile = mnumber;
+    public ContactData withMobilePhone(String mobile) {
+        this.mobile = mobile;
         return this;
     }
 
@@ -53,6 +54,11 @@ public class ContactData {
     }
     public ContactData withAllPhones(String allPhones) {
         this.allPhones = allPhones;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
         return this;
     }
 
@@ -87,9 +93,15 @@ public class ContactData {
     public String getWorkPhone() {
         return work;
     }
+
     public String getAllPhones() {
         return allPhones;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
 
     @Override
     public String toString() {
