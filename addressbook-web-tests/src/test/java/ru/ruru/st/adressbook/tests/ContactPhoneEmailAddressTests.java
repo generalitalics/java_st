@@ -20,7 +20,7 @@ public class ContactPhoneEmailAddressTests extends TestBase{
         app.goTo().contactPage();
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData().withFirstname("Max").withLastname("Ivanov2").withHomePhone("22-22")
-                    .withMobilePhone("89025573455").withWorkPhone("+7(903)2233545").withEmail("abc@mail.ru")
+                    .withMobilePhone("89025573455").withWorkPhone("+7(903)2233545").withAllEmail("abc@mail.ru")
                     .withAddress("1234422, Bakley street, 1/2, p.234").withGroup("test1"));
         }
     }
@@ -32,7 +32,7 @@ public class ContactPhoneEmailAddressTests extends TestBase{
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
         assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-        assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
+        assertThat(contact.getAllEmail(), equalTo(mergeEmails(contactInfoFromEditForm)));
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
     }
 
@@ -40,6 +40,12 @@ public class ContactPhoneEmailAddressTests extends TestBase{
         return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
                 .stream().filter((s) -> ! s.equals(""))
                 .map(ContactPhoneEmailAddressTests::cleaned)
+                .collect(Collectors.joining("\n"));
+    }
+
+    private String mergeEmails(ContactData contact) {
+        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s) -> ! s.equals(""))
                 .collect(Collectors.joining("\n"));
     }
 

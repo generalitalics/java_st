@@ -8,6 +8,9 @@ public class ContactData {
     private String home;
     private String work;
     private String email;
+    private String email2;
+    private String email3;
+    private String allemail;
     private String address;
     private String group;
     private String allPhones;
@@ -17,18 +20,23 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHomePhone(String home) {
-        this.home = home;
-        return this;
-    }
-
-    public ContactData withWorkPhone(String work) {
-        this.work = work;
+    public ContactData withAllEmail(String allemail) {
+        this.allemail = allemail;
         return this;
     }
 
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
         return this;
     }
 
@@ -42,6 +50,21 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withHomePhone(String home) {
+        this.home = home;
+        return this;
+    }
+
+    public ContactData withWorkPhone(String work) {
+        this.work = work;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
     public ContactData withLastname(String lastname) {
         this.lastname = lastname;
 
@@ -52,11 +75,6 @@ public class ContactData {
         this.firstname = firstname;
         return this;
     }
-    public ContactData withAllPhones(String allPhones) {
-        this.allPhones = allPhones;
-        return this;
-    }
-
     public ContactData withAddress(String address) {
         this.address = address;
         return this;
@@ -78,14 +96,6 @@ public class ContactData {
         return mobile;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
     public String getHomePhone() {
         return home;
     }
@@ -97,6 +107,27 @@ public class ContactData {
     public String getAllPhones() {
         return allPhones;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public String getAllEmail() {
+        return allemail;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
 
     public String getAddress() {
         return address;
