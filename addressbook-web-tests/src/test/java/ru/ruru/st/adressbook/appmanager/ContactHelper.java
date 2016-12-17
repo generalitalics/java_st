@@ -133,7 +133,23 @@ public class ContactHelper extends HelperBase {
                 .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
     }
 
+    public ContactData infoFromDetails(ContactData contact) {
+        initContactViewById(contact.getId());
+
+        String info[] = wd.findElement(By.id("content")).getText().replaceAll("[MWH]: ", "")
+                .replaceAll("\\n+\\s*", "\n").replaceFirst(" ", "\n").split("\n");
+        wd.navigate().back();
+
+        return new ContactData().withId(contact.getId()).withFirstname(info[0]).withLastname(info[1])
+                .withHomePhone(info[2]).withMobilePhone(info[3]).withWorkPhone(info[4])
+                .withAddress(info[5]);
+    }
+
     private void initContactModificationById(int id) {
         wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+    }
+
+    public void initContactViewById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
     }
 }
