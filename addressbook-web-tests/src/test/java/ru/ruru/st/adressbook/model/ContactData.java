@@ -1,5 +1,7 @@
 package ru.ruru.st.adressbook.model;
 
+import java.io.File;
+
 public class ContactData {
     private int id = Integer.MAX_VALUE;
     private String firstname;
@@ -14,6 +16,13 @@ public class ContactData {
     private String address;
     private String group;
     private String allPhones;
+    private File photo;
+
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
 
     public ContactData withId(int id) {
         this.id = id;
@@ -82,6 +91,10 @@ public class ContactData {
 
     public int getId() {
         return id;
+    }
+
+    public File getPhoto() {
+        return photo;
     }
 
     public String getFirstname() {
