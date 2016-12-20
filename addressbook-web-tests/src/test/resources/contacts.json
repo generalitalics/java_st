@@ -1,0 +1,35 @@
+[
+  {
+    "firstname": "Max 0",
+    "lastname": "Ivanov 0",
+    "mobile": "89053222320",
+    "home": "89033222320",
+    "work": "89063222320",
+    "email": "mail0@mail.ru",
+    "email2": "mail20@mail.ru",
+    "email3": "mail30@mail.ru",
+    "address": "123321, Baker st, d.0"
+  },
+  {
+    "firstname": "Max 1",
+    "lastname": "Ivanov 1",
+    "mobile": "89053222321",
+    "home": "89033222321",
+    "work": "89063222321",
+    "email": "mail1@mail.ru",
+    "email2": "mail21@mail.ru",
+    "email3": "mail31@mail.ru",
+    "address": "123321, Baker st, d.1"
+  },
+  {
+    "firstname": "Max 2",
+    "lastname": "Ivanov 2",
+    "mobile": "89053222322",
+    "home": "89033222322",
+    "work": "89063222322",
+    "email": "mail2@mail.ru",
+    "email2": "mail22@mail.ru",
+    "email3": "mail32@mail.ru",
+    "address": "123321, Baker st, d.2"
+  }
+]

@@ -1,0 +1,38 @@
+<list>
+  <contact>
+    <id>2147483647</id>
+    <firstname>Max 0</firstname>
+    <lastname>Ivanov 0</lastname>
+    <mobile>89053222320</mobile>
+    <home>89033222320</home>
+    <work>89063222320</work>
+    <email>mail0@mail.ru</email>
+    <email2>mail20@mail.ru</email2>
+    <email3>mail30@mail.ru</email3>
+    <address>123321, Baker st, d.0</address>
+  </contact>
+  <contact>
+    <id>2147483647</id>
+    <firstname>Max 1</firstname>
+    <lastname>Ivanov 1</lastname>
+    <mobile>89053222321</mobile>
+    <home>89033222321</home>
+    <work>89063222321</work>
+    <email>mail1@mail.ru</email>
+    <email2>mail21@mail.ru</email2>
+    <email3>mail31@mail.ru</email3>
+    <address>123321, Baker st, d.1</address>
+  </contact>
+  <contact>
+    <id>2147483647</id>
+    <firstname>Max 2</firstname>
+    <lastname>Ivanov 2</lastname>
+    <mobile>89053222322</mobile>
+    <home>89033222322</home>
+    <work>89063222322</work>
+    <email>mail2@mail.ru</email>
+    <email2>mail22@mail.ru</email2>
+    <email3>mail32@mail.ru</email3>
+    <address>123321, Baker st, d.2</address>
+  </contact>
+</list>
