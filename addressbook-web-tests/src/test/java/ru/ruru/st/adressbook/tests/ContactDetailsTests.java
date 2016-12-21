@@ -31,15 +31,7 @@ public class ContactDetailsTests extends  TestBase {
         app.goTo().contactPage();
         ContactData contactInfoFromDetails = app.contact().infoFromDetails(contact);
         assertThat(contactInfoFromEdit, equalTo(contactInfoFromDetails));
-
-        /*
-        ContactData contact = app.contact().all().iterator().next();
-        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-
-        assertThat(contact.getAllPhones(), equalTo(contactInfoFromEditForm));
-        assertThat(contact.getAllEmail(), equalTo(contactInfoFromEditForm));
-        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
-        */
+        
 
     }
 }
