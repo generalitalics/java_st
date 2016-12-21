@@ -8,8 +8,10 @@ import org.testng.annotations.Test;
 import ru.ruru.st.adressbook.model.GroupData;
 import ru.ruru.st.adressbook.model.Groups;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,15 +57,15 @@ public class GroupCreationTests extends TestBase {
 
     @Test(dataProvider = "validGroupsFromJson")
     public void testGroupCreation(GroupData group) {
-            app.goTo().groupPage();
-            Groups before = app.group().all();
-            app.group().create(group);
-            assertThat(app.group().count(), equalTo(before.size() + 1));
-            Groups after = app.group().all();
-            assertThat(after, equalTo(
-                    before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size() + 1));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(
+                before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
-    }
+}
     @Test
     public void testBedGroupCreation() {
         app.goTo().groupPage();

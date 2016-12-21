@@ -31,7 +31,7 @@ public class ContactDetailsTests extends  TestBase {
         app.goTo().contactPage();
         ContactData contactInfoFromDetails = app.contact().infoFromDetails(contact);
         assertThat(contactInfoFromEdit, equalTo(contactInfoFromDetails));
-        
+
 
     }
 }
