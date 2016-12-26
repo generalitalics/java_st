@@ -2,38 +2,65 @@ package ru.ruru.st.adressbook.model;
 
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Entity;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.File;
 
+@javax.persistence.Entity
+@Table(name = "addressbook")
 public class ContactData {
     @XStreamOmitField
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name = "firstname")
     private String firstname;
     @Expose
+    @Column(name = "lastname")
     private String lastname;
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobile;
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String home;
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String work;
     @Expose
+    @Transient
     private String email;
     @Expose
+    @Transient
     private String email2;
     @Expose
+    @Transient
     private String email3;
+    @Transient
     private String allemail;
     @Expose
+    @Transient
     private String address;
+    @Transient
     private String group;
+    @Transient
     private String allPhones;
-    private File photo;
+    @Column(name = "photo")
+    @Type(type = "text")
+    private String photo;
 
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -107,7 +134,7 @@ public class ContactData {
     }
 
     public File getPhoto() {
-        return photo;
+        return new File(photo);
     }
 
     public String getFirstname() {
