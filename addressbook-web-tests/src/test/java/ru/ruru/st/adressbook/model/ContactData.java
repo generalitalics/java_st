@@ -3,13 +3,13 @@ package ru.ruru.st.adressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Entity;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "addressbook")
@@ -50,12 +50,15 @@ public class ContactData {
     @Expose
     @Transient
     private String address;
-    @Transient
-    private String group;
+
     @Transient
     private String allPhones;
     @Transient
     private File photo;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
 
     public ContactData withPhoto(File photo) {
@@ -88,10 +91,6 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withGroup(String group) {
-        this.group = group;
-        return this;
-    }
 
     public ContactData withMobilePhone(String mobile) {
         this.mobile = mobile;
@@ -176,15 +175,24 @@ public class ContactData {
         return allemail;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
-
     public String getAddress() {
         return address;
     }
 
+    public Groups getGroups() {
+        if (groups == null) {
+            groups = new HashSet<>();
+        }
+        return new Groups(groups);
+    }
+
+    public ContactData inGroup(GroupData group){
+        if (groups == null) {
+            groups = new HashSet<>();
+            }
+        groups.add(group);
+        return this;
+    }
 
     @Override
     public String toString() {

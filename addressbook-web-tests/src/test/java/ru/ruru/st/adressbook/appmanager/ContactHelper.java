@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.ruru.st.adressbook.model.ContactData;
 import ru.ruru.st.adressbook.model.Contacts;
+import ru.ruru.st.adressbook.model.GroupData;
 
 import java.util.List;
 
@@ -35,9 +36,9 @@ public class ContactHelper extends HelperBase {
         attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
-            if (contactData.getGroup() != null) {
-                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-            }
+        //    if (contactData.getGroup() != null) {
+        //        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        //    }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
             }
@@ -154,4 +155,17 @@ public class ContactHelper extends HelperBase {
     public void initContactViewById(int id) {
         wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
     }
+    public void createContactInGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        click(By.xpath("//select[@name='to_group']//option[@value='" + group.getId() + "']"));
+        click(By.name("add"));
+    }
+
+    public void deleteContactOffGroup(ContactData contact, GroupData group) {
+        click(By.xpath("//select[@name='group']//option[@value='" + group.getId() + "']"));
+        selectContactById(contact.getId());
+        click(By.name("remove"));
+    }
 }
+
+
