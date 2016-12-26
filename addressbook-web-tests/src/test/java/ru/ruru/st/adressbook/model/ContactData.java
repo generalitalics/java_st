@@ -54,13 +54,12 @@ public class ContactData {
     private String group;
     @Transient
     private String allPhones;
-    @Column(name = "photo")
-    @Type(type = "text")
-    private String photo;
+    @Transient
+    private File photo;
 
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo.getPath();
+        this.photo = photo;
         return this;
     }
 
@@ -134,7 +133,7 @@ public class ContactData {
     }
 
     public File getPhoto() {
-        return new File(photo);
+        return photo;
     }
 
     public String getFirstname() {
